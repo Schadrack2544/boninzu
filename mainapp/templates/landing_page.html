@@ -1,0 +1,65 @@
+<!-- landing_page.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="hero">
+  <h1>Murakaza neza Kuri <span style="color:red;">Bon</span><span style="color:yellow">inzu</span> </h1>
+  <a href="#all" class="btn btn-danger">Reba inzu zose</a>
+  <div class="hero-overlay">
+  </div>
+</div>
+  <div id="all">
+  <h2 class="group-title">Houses for Rent</h2>
+  <div class="property-container">
+    {% for house in houses %}
+      <div class="property-card">
+        <h3 style="font-weight: bold; padding-bottom:8px">{{ house.title }}</h3>
+        <img src="{{house.image.url}}" alt="house image" style="width:100%;height:200px; object-fit:cover">
+        <p class="miniText">{{ house.description }}</p>
+        <p>Contact: {{ house.owner_contact }}</p>
+        <p>Price per Month: {{ house.price }} Rwf</p>
+        <p>Location: {{ house.location }}</p>
+        <a href="/house/{{house.id}}" class="btn btn-primary">Menya byinshi</a>
+      </div>
+    {% empty %}
+      <p>No houses available for rent at the moment.</p>
+    {% endfor %}
+  </div>
+  <h2 class="group-title">Offices for Rent</h2>
+  <div class="property-container">
+    {% for office in offices %}
+      <div class="property-card">
+        <h3 style="font-weight: bold; padding-bottom:8px">{{ office.title }}</h3>
+        <img src="{{office.image.url}}" alt="house image" style="width:100%;height:200px; object-fit:cover">
+        <p class="miniText">{{ office.description }}</p>
+        <p>Contact: {{ office.owner_contact }}</p>
+        <p>Price per Month: {{ office.price }} Rwf</p>
+        <p>Location: {{ office.location }}</p>
+        <a href="/office/{{office.id}}" class="btn btn-primary">Menya byinshi</a>
+      </div>
+    {% empty %}
+      <p>No offices available for rent at the moment.</p>
+    {% endfor %}
+  </div>
+  
+  
+  
+  <h2 class="group-title">Apartments for Rent</h2>
+  <div class="property-container">
+    {% for apartment in apartments %}
+      <div class="property-card">
+        <h3 style="font-weight: bold;padding-bottom:8px">{{ apartment.title }}</h3>
+        <img src="{{apartment.image.url}}" alt="house image" style="width:100%;height:200px; object-fit:cover">
+        <p class="miniText">{{ apartment.description }}</p>
+        <p>Contact: {{ apartment.owner_contact }}</p>
+        <p>Price per Month: {{ apartment.price }} Rwf</p>
+        <p>Location: {{ apartment.location }}</p>
+        <a href="/apartment/{{apartment.id}}" class="btn btn-primary">Menya byinshi</a>
+      </div>
+    {% empty %}
+      <p>No apartments available for rent at the moment.</p>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

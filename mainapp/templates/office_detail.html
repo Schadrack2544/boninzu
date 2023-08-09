@@ -1,0 +1,29 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+ <div class="item-detail">
+    <h3 style="font-weight: bold; padding-bottom:8px">{{ office.title }}</h3>
+<img src="{{office.image.url}}" alt="office image" style="width:100%;height:200px; object-fit:cover">
+<p>{{ office.description }}</p>
+<p>Contact: {{ office.owner_contact }}</p>
+<p>Price per Month: {{ office.price }} Rwf</p>
+<p>Location: {{ office.location }}</p>
+
+ </div>
+ <h2 style="text-align: center; margin-top:20px">Featured images</h2>
+ <div class="featured-images">
+    {% for featured_image in office.featured_images.all %}
+    <img src="{{ featured_image.image.url }}" width="300" height="200"  onclick="openModal(this);" />
+    {% endfor %}
+  </div>
+
+  <div id="modal" class="modal">
+    <span class="close" onclick="closeModal();">&times;</span>
+    <img class="modal-content" id="modalImage">
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+</div>
+<script src="{% static 'js/gallery.js' %}"></script>
+{% endblock  %}

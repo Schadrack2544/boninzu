@@ -1,0 +1,21 @@
+<!-- apartment_list.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="group-title">Apartments for Rent</h2>
+<div class="property-container">
+  {% for apartment in apartments %}
+    <div class="property-card">
+      <h3 style="font-weight: bold;padding-bottom:8px">{{ apartment.title }}</h3>
+      <img src="{{apartment.image.url}}" alt="house image" style="width:100%;height:200px; object-fit:cover">
+      <p class="miniText">{{ apartment.description }}</p>
+      <p>Contact: {{ apartment.owner_contact }}</p>
+      <p>Price per Month: {{ apartment.price }} Rwf</p>
+      <p>Location: {{ apartment.location }}</p>
+      <a href="/apartment/{{apartment.id}}" class="btn btn-primary">Menya byinshi</a>
+    </div>
+  {% empty %}
+    <p>No apartments available for rent at the moment.</p>
+  {% endfor %}
+</div>
+{% endblock %}

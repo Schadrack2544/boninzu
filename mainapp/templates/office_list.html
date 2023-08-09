@@ -1,0 +1,21 @@
+<!-- office_list.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="group-title">Offices for Rent</h2>
+<div class="property-container">
+  {% for office in offices %}
+    <div class="property-card">
+      <h3 style="font-weight: bold; padding-bottom:8px">{{ office.title }}</h3>
+      <img src="{{office.image.url}}" alt="house image" style="width:100%;height:200px; object-fit:cover">
+      <p class="miniText">{{ office.description }}</p>
+      <p>Contact: {{ office.owner_contact }}</p>
+      <p>Price per Month: {{ office.price }} Rwf</p>
+      <p>Location: {{ office.location }}</p>
+      <a href="/office/{{office.id}}" class="btn btn-primary">Menya byinshi</a>
+    </div>
+  {% empty %}
+    <p>No offices available for rent at the moment.</p>
+  {% endfor %}
+</div>
+{% endblock %}
